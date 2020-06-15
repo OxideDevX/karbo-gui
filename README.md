@@ -4,7 +4,7 @@ Alt. wallet for Karbo
 **1. Clone wallet sources**
 
 ```
-git clone https://github.com/Karbovanets/Karbo-GUI.git
+git clone https://github.com/seredat/karbo-gui.git
 ```
 
 **2. Set symbolic link to coin sources at the same level as `src`. For example:**
