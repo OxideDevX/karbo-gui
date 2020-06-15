@@ -1,5 +1,5 @@
 // Copyright (c) 2015-2017, The Bytecoin developers
-// Copyright (c) 2017-2018, The Karbo developers
+// Copyright (c) 2017-2020, The Karbo developers
 //
 // This file is part of Karbo.
 //
@@ -23,7 +23,7 @@
 #include "WalletLogger/WalletLogger.h"
 #include "BlockChainExplorerAdapter.h"
 #include "WalletGreenAdapter.h"
-
+#include "Settings/Settings.h"
 #include "NodeRpcProxy/NodeRpcProxy.h"
 
 namespace WalletGui {
@@ -136,10 +136,7 @@ void ProxyRpcNodeWorker::removeObserver(INodeAdapterObserver* _observer) {
 
 IBlockChainExplorerAdapter* ProxyRpcNodeWorker::getBlockChainExplorerAdapter() {
   Q_ASSERT(!m_node.isNull());
-  return nullptr;
   return m_blockchainExplorerAdapter;
-  BlockChainExplorerAdapter* blockchainExplorerAdapter = new BlockChainExplorerAdapter(*m_node, m_loggerManager, nullptr);
-  return blockchainExplorerAdapter;
 }
 
 IWalletAdapter* ProxyRpcNodeWorker::getWalletAdapter() {
@@ -177,14 +174,15 @@ void ProxyRpcNodeWorker::initImpl() {
   m_node->init([this](std::error_code _errorCode) {
     Q_ASSERT(_errorCode.value() == 0);
     if (_errorCode.value() == 0) {
+      if (m_blockchainExplorerAdapter == nullptr && Settings::instance().isBlockchainExplorerEnabled() && !m_node.isNull()) {
+        BlockChainExplorerAdapter* blockchainExplorerAdapter = new BlockChainExplorerAdapter(*m_node, m_loggerManager, nullptr);
+        blockchainExplorerAdapter->moveToThread(qApp->thread());
+        m_blockchainExplorerAdapter = blockchainExplorerAdapter;
+      }
       Q_EMIT initCompletedSignal(INodeAdapter::INIT_SUCCESS);
     } else {
       WalletLogger::critical(tr("[RPC node] NodeRpcProxy init error: %1").arg(_errorCode.message().data()));
     }
-
-    BlockChainExplorerAdapter* blockchainExplorerAdapter = new BlockChainExplorerAdapter(*m_node, m_loggerManager, nullptr);
-      blockchainExplorerAdapter->moveToThread(qApp->thread());
-      m_blockchainExplorerAdapter = blockchainExplorerAdapter;
 
     WalletLogger::debug(tr("[RPC node] NodeRpcProxy init result: %1").arg(_errorCode.value()));
   });
