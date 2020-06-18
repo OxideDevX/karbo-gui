@@ -288,6 +288,7 @@ void InProcessNodeWorker::initImpl() {
   }
 
   if (Settings::instance().isBlockchainExplorerEnabled()) {
+    m_blockchainExplorerAdapter = nullptr;
     BlockChainExplorerAdapter* blockchainExplorerAdapter = new BlockChainExplorerAdapter(*m_node, m_loggerManager, nullptr);
     blockchainExplorerAdapter->moveToThread(qApp->thread());
     m_blockchainExplorerAdapter = blockchainExplorerAdapter;

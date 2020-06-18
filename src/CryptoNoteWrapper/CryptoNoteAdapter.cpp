@@ -18,6 +18,7 @@
 
 #include <QEventLoop>
 #include <QThread>
+#include <QTimer>
 #include <QTimerEvent>
 #include <QUrl>
 
@@ -276,8 +277,20 @@ void CryptoNoteAdapter::removeObserver(ICryptoNoteAdapterObserver* _observer) {
 }
 
 void CryptoNoteAdapter::initCompleted(int _status) {
-  if (_status == INodeAdapter::INIT_SUCCESS && m_nodeAdapter->getBlockChainExplorerAdapter() != nullptr) {
-    m_nodeAdapter->getBlockChainExplorerAdapter()->init();
+  try {
+    if (_status == INodeAdapter::INIT_SUCCESS && m_nodeAdapter->getBlockChainExplorerAdapter() != nullptr) {
+      WalletLogger::info(tr("[CryptoNote wrapper] Initializing blockchain explorer..."));
+      QTimer::singleShot(100, [this]() {
+          auto explInitStatus = m_nodeAdapter->getBlockChainExplorerAdapter()->init();
+          if (explInitStatus == IBlockChainExplorerAdapter::INIT_SUCCESS) {
+            WalletLogger::info(tr("[CryptoNote wrapper] Blockchain explorer initialized"));
+          } else {
+            WalletLogger::critical(tr("[CryptoNote wrapper] Blockchain explorer initialization error: %1").arg(static_cast<int>(explInitStatus)));
+          }
+      } );
+    }
+  } catch (const std::exception& _error) {
+    WalletLogger::critical(tr("[CryptoNote wrapper] Blockchain explorer creation error: %1").arg(_error.what()));
   }
 
   if (m_nodeAdapter->getNodeType() == NodeType::IN_PROCESS || m_autoConnectionTimerId == -1) {
