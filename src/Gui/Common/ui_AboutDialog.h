@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'AboutDialog.ui'
+** Form generated from reading UI file 'AboutDialogllDcqc.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.10.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_ABOUTDIALOG_H
-#define UI_ABOUTDIALOG_H
+#ifndef ABOUTDIALOGLLDCQC_H
+#define ABOUTDIALOGLLDCQC_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -82,9 +82,9 @@ public:
 
     void retranslateUi(QDialog *AboutDialog)
     {
-        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About KarboWallet", nullptr));
-        m_aboutLabel->setText(QApplication::translate("AboutDialog", "<html><head/><body><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Karbo Wallet v. %1, Karbo Core v. %2</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Karbo (Karbovanets) is the next generation anonymous cryptocurrency based on CryptoNote.</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Copyright \302\251 2017-%3 The Karbowanec developers</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Copyright \302\251 2012-2017 The Bytecoin developers</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">This is free software.</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Distributed under the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty"
-                        " of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details:</span></p><p><a href=\"https://www.gnu.org/licenses/lgpl.html\"><span style=\" font-family:'Open Sans'; font-size:14px; text-decoration: underline; color:#0000ff;\">https://www.gnu.org/licenses/lgpl.html</span></a></p><p><a href=\"http://karbo.io/\"><span style=\" font-family:'Open Sans'; font-size:14px; text-decoration: underline; color:#0000ff;\">http://karbo.io/</span></a></p></body></html>", nullptr));
+        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About Karbo Spring Wallet", nullptr));
+        m_aboutLabel->setText(QApplication::translate("AboutDialog", "<html><head/><body><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Karbo Spring Wallet v. %1, Karbo Core v. %2</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Karbo (Karbovanets) is the next generation anonymous cryptocurrency based on CryptoNote.</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Copyright \302\251 2017-%3 The Karbowanec developers</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Copyright \302\251 2012-2017 The Bytecoin developers</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">This is free software.</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Distributed under the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.</span></p><p><span style=\" font-family:'Open Sans'; font-size:14px;\">Distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied w"
+                        "arranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details:</span></p><p><a href=\"https://www.gnu.org/licenses/lgpl.html\"><span style=\" font-family:'Open Sans'; font-size:14px; text-decoration: underline; color:#0000ff;\">https://www.gnu.org/licenses/lgpl.html</span></a></p><p><a href=\"http://karbo.io/\"><span style=\" font-family:'Open Sans'; font-size:14px; text-decoration: underline; color:#0000ff;\">http://karbo.io/</span></a></p></body></html>", nullptr));
         m_okButton->setText(QApplication::translate("AboutDialog", "Close", nullptr));
     } // retranslateUi
 
@@ -96,4 +96,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_ABOUTDIALOG_H
+#endif // ABOUTDIALOGLLDCQC_H
