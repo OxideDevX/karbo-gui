@@ -74,7 +74,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.pack.outputs.asset_path }}
-          name: Karbo Wallet ${{ steps.pack.outputs.krb_ver }}
+          name: Karbo Spring Wallet ${{ steps.pack.outputs.krb_ver }}
           body: |
             **${{ steps.pack.outputs.release_name }}**
             ${{ steps.pack.outputs.sha256 }}
@@ -128,7 +128,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.build.outputs.asset_path }}
-          name: Karbo Wallet ${{ steps.build.outputs.krb_ver }}
+          name: Karbo Spring Wallet ${{ steps.build.outputs.krb_ver }}
           body: |
             **${{ steps.build.outputs.release_name }}**
             ${{ steps.build.outputs.sha256 }}
@@ -167,7 +167,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.build.outputs.asset_path }}
-          name: Karbo Wallet ${{ steps.build.outputs.krb_ver }}
+          name: Karbo Spring Wallet ${{ steps.build.outputs.krb_ver }}
           body: |
             **${{ steps.build.outputs.release_name }}**
             ${{ steps.build.outputs.sha256 }}
@@ -207,7 +207,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.build.outputs.asset_path }}
-          name: Karbo Wallet ${{ steps.build.outputs.krb_ver }}
+          name: Karbo Spring Wallet ${{ steps.build.outputs.krb_ver }}
           body: |
             **${{ steps.build.outputs.release_name }}**
             ${{ steps.build.outputs.sha256 }}
