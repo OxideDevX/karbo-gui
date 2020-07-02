@@ -5,19 +5,21 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>KarboLite</string>
+	<string>@WALLET_NAME@</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Karbo Lite Wallet</string>
+	<string>Karbo Spring Wallet</string>
 	<key>CFBundleIconFile</key>
 	<string>Karbovanets.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.karbo.KarboLite-Qt</string>
+	<string>org.karbo.SpringWallet-Qt</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleLongVersionString</key>
 	<string>@WALLET_VERSION@</string>
+	<key>CFBundleDisplayName</key>
+	<string>Karbo Spring Wallet</string>
 	<key>CFBundleName</key>
-	<string>Karbo Lite Wallet</string>
+	<string>Spring Wallet</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -25,7 +27,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>karboLite@WALLET_VERSION@</string>
+	<string>karboSpring@WALLET_VERSION@</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>NSRequiresAquaSystemAppearance</key>
