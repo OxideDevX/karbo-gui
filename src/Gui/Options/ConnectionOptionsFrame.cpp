@@ -75,7 +75,7 @@ void ConnectionOptionsFrame::load() {
   if (remoteUrl.isEmpty()) {
     m_ui->m_remotePortSpin->setValue(CryptoNote::RPC_DEFAULT_PORT);
   } else {
-    m_ui->m_remoteHostEdit->setText(remoteUrl.host());
+    m_ui->m_remoteHostEdit->setText(remoteUrl.scheme() + "://" + remoteUrl.host());
     m_ui->m_remotePortSpin->setValue(remoteUrl.port());
   }
 
@@ -117,7 +117,8 @@ bool ConnectionOptionsFrame::needToRestartApplication() const {
 
 bool ConnectionOptionsFrame::canAccept() const {
   if (m_ui->m_remoteRadio->isChecked()) {
-    return isIpOrHostName(m_ui->m_remoteHostEdit->text());
+    QUrl remoteNodeUrl = QUrl::fromUserInput(m_ui->m_remoteHostEdit->text());
+    return isIpOrHostName(remoteNodeUrl.host());
   } else {
     return true;
   }

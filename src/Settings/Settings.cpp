@@ -76,7 +76,7 @@ Settings& Settings::instance() {
 
 
 Settings::Settings() : m_p2pBindPort(0), m_cmdLineParser(nullptr) {
-  m_defaultNodeList << "node.karbowanec.com:32348" << "node.karbovanets.org:32348" << "node.karbo.cloud:32348" << "node.karbo.io:32348";
+  m_defaultNodeList << "http://node.karbowanec.com:32348" << "http://node.karbovanets.org:32348" << "http://node.karbo.cloud:32348" << "http://node.karbo.io:32348";
 
   Style* lightStyle = new LightStyle();
   Style* darkStyle = new DarkStyle();
@@ -526,16 +526,20 @@ void Settings::setLocalRpcPort(quint16 _port) {
 }
 
 void Settings::setRemoteRpcUrl(const QUrl& _url) {
-  QUrl oldUrl = getRemoteRpcUrl();
-  if (oldUrl.host() != _url.host() || oldUrl.port() != _url.port()) {
+  //QUrl oldUrl = getRemoteRpcUrl();
+  //if (oldUrl.host() != _url.host() || oldUrl.port() != _url.port()) {
     {
       QWriteLocker lock(&m_lock);
-      m_settings.insert(OPTION_NODE_REMOTE_RPC_URL, QString("%1:%2").arg(_url.host()).arg(_url.port()));
+      QUrl __url = _url;
+      if (_url.scheme().compare("") == 0) {
+         __url.setScheme("http");
+      }
+      m_settings.insert(OPTION_NODE_REMOTE_RPC_URL, QString("%1://%2:%3").arg(__url.scheme()).arg(__url.host()).arg(_url.port()));
       saveSettings();
     }
 
     notifyObservers();
-  }
+  //}
 }
 
 void Settings::setP2pBindPort(quint16 _p2pBindPort) {
