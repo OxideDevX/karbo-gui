@@ -61,6 +61,8 @@ jobs:
           cd "$release_folder"
           cp karbowallet.exe "$release_name/"
           cp "../../LICENSE" "$release_name/LICENSE.txt"
+          cp "C:/Program Files/OpenSSL-Win64/bin/libssl*.dll" "$release_name/"
+          cp "C:/Program Files/OpenSSL-Win64/bin/libcrypto*.dll" "$release_name/"
           windeployqt --release karbowallet.exe --dir "$release_name/"
           Compress-Archive -Path "$release_name/" -DestinationPath "$release_name.zip"
           $sha256 = (Get-FileHash "$release_name.zip").Hash
