@@ -44,7 +44,7 @@ jobs:
           set CMAKE_PREFIX_PATH="$($qt5_cmake)"
           $qt5_cmake = "${{ env.Qt5_Dir }}/lib/cmake" -replace '[/]', '\\'
           Remove-Item cryptonote -Recurse -ErrorAction Ignore
-          git clone https://github.com/seredat/karbowanec cryptonote
+          git clone https://github.com/seredat/karbowanec.git cryptonote
           mkdir "$build_folder"
           cd "$build_folder"
           Start-Process cmake -ArgumentList "-DBOOST_ROOT=""$env:BOOST_ROOT_1_69_0"" -G ""Visual Studio 16 2019"" -A x64",".." -NoNewWindow -Wait
@@ -175,7 +175,7 @@ jobs:
           sudo apt update -y
           sudo apt install -y qt5-default qttools5-dev qttools5-dev-tools libboost-all-dev
           build_folder="build/release"
-          krb_ver="${{ steps.build.outputs.krb_ver }}"
+          krb_ver="${{steps.tagger.outputs.tag}}"
           release_name=karbowallet-ubuntu-20.04-"$krb_ver"
           app_name="karbowallet"
           rm -rf cryptonote
@@ -224,7 +224,7 @@ jobs:
           sudo apt update -y
           sudo apt install -y qt5-default qttools5-dev qttools5-dev-tools libboost-all-dev
           build_folder="build/release"
-          krb_ver="${{ steps.build.outputs.krb_ver }}"
+          krb_ver="${{steps.tagger.outputs.tag}}"
           release_name=karbowallet-ubuntu-18.04-"$krb_ver"
           app_name="karbowallet"
           rm -rf cryptonote
