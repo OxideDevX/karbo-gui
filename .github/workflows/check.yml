@@ -83,8 +83,8 @@ jobs:
       - name: Create Archive Artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          path: ${{ steps.build.outputs.asset_path }}
-          name: ${{ steps.build.outputs.release_name }}
+          path: ${{ steps.pack.outputs.asset_path }}
+          name: ${{ steps.pack.outputs.release_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
