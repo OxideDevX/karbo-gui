@@ -34,6 +34,7 @@ jobs:
         id: build
         env:
           BOOST_ROOT: ${{ env.BOOST_ROOT }}
+          GIT_REDIRECT_STDERR: '2>&1'
         run: |
           $build_folder = "build"
           $krb_ver = "${{ github.ref }}" -replace '[refs/tags/]'
