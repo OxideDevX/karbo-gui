@@ -53,6 +53,7 @@
 #include "SignalHandler.h"
 #include "Style/Style.h"
 #include "WalletSplashScreen.h"
+#include "WalletUpdate.h"
 
 namespace WalletGui {
 
@@ -354,6 +355,9 @@ void WalletApplication::initUi() {
     m_splash->deleteLater();
     m_splash = nullptr;
   }
+
+  Updater *u = new Updater();
+  u->checkForUpdate();
 
   m_mainWindow->show();
 #ifdef Q_OS_WIN
