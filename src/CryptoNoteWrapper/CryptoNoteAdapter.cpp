@@ -376,8 +376,9 @@ void CryptoNoteAdapter::initNode() {
 }
 
 void CryptoNoteAdapter::initAutoConnection() {
-  WalletLogger::debug(tr("[CryptoNote wrapper] Searching local daemon: 127.0.0.1:%1").arg(CryptoNote::RPC_DEFAULT_PORT));
-  m_nodeAdapter = new ProxyRpcNodeAdapter(m_currency, m_coreLogger, m_walletLogger, QUrl::fromUserInput("http://127.0.0.1:" + CryptoNote::RPC_DEFAULT_PORT), this);
+  WalletLogger::info(tr("[CryptoNote wrapper] Searching local daemon: 127.0.0.1:%1").arg(CryptoNote::RPC_DEFAULT_PORT));
+  QString nodeUrl = "http://127.0.0.1:" + QString::number(CryptoNote::RPC_DEFAULT_PORT);
+  m_nodeAdapter = new ProxyRpcNodeAdapter(m_currency, m_coreLogger, m_walletLogger, QUrl::fromUserInput(nodeUrl), this);
   m_nodeAdapter->addObserver(this);
   m_autoConnectionTimerId = startTimer(AUTO_CONNECTION_INTERVAL);
   m_nodeAdapter->init();
@@ -390,7 +391,8 @@ void CryptoNoteAdapter::initInProcessNode() {
 }
 
 void CryptoNoteAdapter::initLocalRpcNode() {
-  m_nodeAdapter = new ProxyRpcNodeAdapter(m_currency, m_coreLogger, m_walletLogger, QUrl::fromUserInput("http://127.0.0.1:" + m_localDaemodPort), this);
+  QString nodeUrl = "http://127.0.0.1:" + QString::number(m_localDaemodPort);
+  m_nodeAdapter = new ProxyRpcNodeAdapter(m_currency, m_coreLogger, m_walletLogger, QUrl::fromUserInput(nodeUrl), this);
   m_nodeAdapter->addObserver(this);
   m_nodeAdapter->init();
 }
@@ -403,7 +405,7 @@ void CryptoNoteAdapter::initRemoteRpcNode() {
 }
 
 void CryptoNoteAdapter::onLocalDaemonNotFound() {
-  WalletLogger::debug(tr("[CryptoNote wrapper] Daemon on 127.0.0.1:%1 not found").arg(CryptoNote::RPC_DEFAULT_PORT));
+  WalletLogger::info(tr("[CryptoNote wrapper] Daemon on 127.0.0.1:%1 not found").arg(CryptoNote::RPC_DEFAULT_PORT));
   killTimer(m_autoConnectionTimerId);
   m_autoConnectionTimerId = -1;
   QObject* nodeAdapter = dynamic_cast<QObject*>(m_nodeAdapter);
