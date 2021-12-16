@@ -157,6 +157,7 @@ file(GLOB_RECURSE CRYPTONOTE_SOURCES
   cryptonote/src/crypto/slow-hash.c
   cryptonote/src/crypto/slow-hash.cpp
   cryptonote/src/crypto/tree-hash.c
+  cryptonote/src/crypto/yespower.c
   cryptonote/src/CryptoNoteCore/*.cpp
   cryptonote/src/CryptoNoteProtocol/*.cpp
   cryptonote/src/HTTP/*.cpp
