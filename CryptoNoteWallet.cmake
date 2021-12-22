@@ -1,4 +1,4 @@
-set(WALLET_NAME "karbowallet")
+set(WALLET_NAME "KarboSpringWallet")
 set(CN_CURRENCY_DISPLAY_NAME "Karbo")
 set(CN_CURRENCY_TICKER "KRB")
 
